@@ -15,6 +15,6 @@ public class FollowPlayer : MonoBehaviour
         float newY = Mathf.Clamp(player.position.y + offset.y, boundsMin.y, boundsMax.y);
         float newZ = offset.z;
 
-        this.transform.position = new Vector3(newX, newY, newZ);
+        transform.position = new Vector3(newX, newY, newZ);
     }
 }
