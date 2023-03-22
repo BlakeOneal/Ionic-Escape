@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "up";
+
             }
         }
         foreach (RaycastHit2D hit in hitDown)
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "down";
+
             }
         }
         foreach (RaycastHit2D hit in hitLeft)
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "left";
+
             }
         }
         foreach (RaycastHit2D hit in hitRight)
@@ -94,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "right";
+ 
             }
         }
 

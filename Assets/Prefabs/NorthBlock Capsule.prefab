@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 305344645740373857}
   - component: {fileID: 305344645740373858}
   - component: {fileID: 1485017879624094277}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NorthBlock Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
