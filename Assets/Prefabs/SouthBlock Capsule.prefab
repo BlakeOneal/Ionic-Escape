@@ -75,6 +75,7 @@ MonoBehaviour:
   _north: 0
   player: {fileID: 0}
   magnet: {fileID: 7166891431435801675}
+  magnetism: 50
   speed: 1
 --- !u!1 &7166891431435801672
 GameObject:
