@@ -26,7 +26,6 @@ public class TimerReloader : MonoBehaviour
 
     void Update()
     {
-        // timerText.text = "Timer: " + deathCount.ToString();
         timeLeftInSeconds -= Time.deltaTime;
         if (timeLeftInSeconds <= 0f)
         {

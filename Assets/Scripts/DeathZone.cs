@@ -20,7 +20,6 @@ public class DeathZone : MonoBehaviour {
 
             //update death count
             playerStats.IncreaseDeathCount();
-            // Debug.Log("Death count: " + playerStats.DeathCount);
         }
     }
 }

@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        // Debug.Log(numJumps);
         if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 2)
         {
             switch (jumpDirection)
@@ -157,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         //Reset feetFacing to down for default
         feetFacing = "down";
 
-        // Debug.Log("Jump Direction: " + jumpDirection); 
+        Debug.Log("Jump Direction: " + jumpDirection); 
 
 
      
