@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("escape")) {
+            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         }
     }

@@ -6,6 +6,11 @@ using UnityEditor;
 public class Quit : MonoBehaviour
 {
     public void quitGame() {
+        if (EditorApplication.isPlaying){
+            EditorApplication.isPlaying = false;
+        }
+        else {
             Application.Quit();
+        }
     }
 }
