@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 2)
+        if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 1)
         {
             switch (jumpDirection)
             {
@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         //Reset feetFacing to down for default
         feetFacing = "down";
 
-        Debug.Log("Jump Direction: " + jumpDirection); 
+       // Debug.Log("Jump Direction: " + jumpDirection); 
 
 
      
@@ -234,4 +234,14 @@ public class PlayerMovement : MonoBehaviour
         // Return the array of raycast hits
         return hits;
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Dialogue" && !LoadDialogue.display)
+        {
+            LoadDialogue.display = true;
+            Debug.Log("HERE");
+            DestroyObject(collision.gameObject);
+        }
+    }
+
 }
