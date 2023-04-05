@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &305344644216839266
+--- !u!1 &1396366208639291682
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 305344644216839268}
-  - component: {fileID: 305344644216839267}
-  - component: {fileID: 8402345663470669219}
-  - component: {fileID: 8402345663470669218}
-  - component: {fileID: 8402345663470669217}
-  m_Layer: 0
+  - component: {fileID: 1396366208639291684}
+  - component: {fileID: 1396366208639291683}
+  - component: {fileID: 7189730861425066211}
+  - component: {fileID: 7189730861425066210}
+  - component: {fileID: 7189730861425066209}
+  m_Layer: 2
   m_Name: Effector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &305344644216839268
+--- !u!4 &1396366208639291684
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344644216839266}
+  m_GameObject: {fileID: 1396366208639291682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.423462, y: 0.32992113, z: -0.046361063}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 305344645740373857}
+  m_Father: {fileID: 1396366209300900385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &305344644216839267
+--- !u!212 &1396366208639291683
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344644216839266}
+  m_GameObject: {fileID: 1396366208639291682}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,14 +87,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8402345663470669219
+--- !u!50 &7189730861425066211
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344644216839266}
+  m_GameObject: {fileID: 1396366208639291682}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -108,13 +108,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!70 &8402345663470669218
+--- !u!70 &7189730861425066210
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344644216839266}
+  m_GameObject: {fileID: 1396366208639291682}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -124,19 +124,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.000024558958, y: 0.04630542}
   m_Size: {x: 1.5557154, y: 2.7223656}
   m_Direction: 1
---- !u!250 &8402345663470669217
+--- !u!250 &7189730861425066209
 PointEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344644216839266}
+  m_GameObject: {fileID: 1396366208639291682}
   m_Enabled: 1
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_ForceMagnitude: 100
+  m_ForceMagnitude: 50
   m_ForceVariation: 0
   m_DistanceScale: 1
   m_ForceSource: 0
@@ -144,7 +144,7 @@ PointEffector2D:
   m_ForceMode: 0
   m_Drag: 0
   m_AngularDrag: 0
---- !u!1 &305344645740373871
+--- !u!1 &1396366209300900399
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,9 +152,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 305344645740373857}
-  - component: {fileID: 305344645740373858}
-  - component: {fileID: 1485017879624094277}
+  - component: {fileID: 1396366209300900385}
+  - component: {fileID: 1396366209300900386}
+  - component: {fileID: 272460192254795525}
   m_Layer: 3
   m_Name: NorthBlock Capsule
   m_TagString: Untagged
@@ -162,29 +162,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &305344645740373857
+--- !u!4 &1396366209300900385
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344645740373871}
+  m_GameObject: {fileID: 1396366209300900399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.53, y: -0.39, z: 0.046361063}
+  m_LocalPosition: {x: -5.22925, y: 0.65, z: 0.046361063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 305344644216839268}
+  - {fileID: 1396366208639291684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &305344645740373858
+--- !u!61 &1396366209300900386
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344645740373871}
+  m_GameObject: {fileID: 1396366209300900399}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -204,13 +204,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.002019, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!114 &1485017879624094277
+--- !u!114 &272460192254795525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305344645740373871}
+  m_GameObject: {fileID: 1396366209300900399}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b33ee6c4266e9d4ba87022403cd0b9a, type: 3}
@@ -218,5 +218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _north: 1
   player: {fileID: 0}
-  magnet: {fileID: 8402345663470669217}
+  magnet: {fileID: 7189730861425066209}
+  magnetism: 50
   speed: 1
