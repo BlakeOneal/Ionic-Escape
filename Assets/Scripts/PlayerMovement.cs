@@ -6,16 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
     public static bool north = true;
-    bool isJumping = false;
     public float moveSpeed = 1.0f;
     public float jumpHeight = 1.0f;
     int platformLayer = 1 << 3;
+    int numJumps = 0;
     Rigidbody2D rb;
     Renderer rend;
     string feetFacing = "up";
     string jumpDirection = "up";
-    //Implement grounded check
-    bool grounded = false;
 
     void Start()
     {
@@ -24,22 +22,31 @@ public class PlayerMovement : MonoBehaviour
         rend.material.color = Color.red;
     }
 
+   void OnTriggerStay2D(Collider2D collision)
+    {
+            numJumps = 0;
+    }
+
     void Update(){
-           if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 1)
         {
             switch (jumpDirection)
             {
                 case "up":
                     rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                    numJumps++;
                     break;
                 case "down":
                     rb.AddForce(Vector2.down * jumpHeight, ForceMode2D.Impulse);
+                    numJumps++;
                     break;
                 case "left":
                     rb.AddForce(Vector2.left * jumpHeight, ForceMode2D.Impulse);
+                    numJumps++;
                     break;
                 case "right":
                     rb.AddForce(Vector2.right * jumpHeight, ForceMode2D.Impulse);
+                    numJumps++;
                     break;
             }
         }
@@ -73,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "up";
+
             }
         }
         foreach (RaycastHit2D hit in hitDown)
@@ -80,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "down";
+
             }
         }
         foreach (RaycastHit2D hit in hitLeft)
@@ -87,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "left";
+
             }
         }
         foreach (RaycastHit2D hit in hitRight)
@@ -94,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
                 feetFacing = "right";
+ 
             }
         }
 
@@ -145,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         //Reset feetFacing to down for default
         feetFacing = "down";
 
-        Debug.Log("Jump Direction: " + jumpDirection); 
+       // Debug.Log("Jump Direction: " + jumpDirection); 
 
 
      
@@ -223,4 +234,14 @@ public class PlayerMovement : MonoBehaviour
         // Return the array of raycast hits
         return hits;
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Dialogue" && !LoadDialogue.display)
+        {
+            LoadDialogue.display = true;
+            Debug.Log("HERE");
+            DestroyObject(collision.gameObject);
+        }
+    }
+
 }
