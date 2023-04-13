@@ -6,12 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
     public static bool north = true;
+    public Animator animator;
+
+    public bool isWalking = false;
+    public bool isRunning = false;
     public float moveSpeed = 1.0f;
     public float jumpHeight = 1.0f;
     int platformLayer = 1 << 3;
     int numJumps = 0;
     Rigidbody2D rb;
     Renderer rend;
+    Vector3 dimensions;
     string feetFacing = "up";
     string jumpDirection = "up";
 
@@ -20,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
         rb = player.GetComponent<Rigidbody2D>();
         rend = player.GetComponent<Renderer>();
         rend.material.color = Color.red;
+        dimensions = player.GetComponent<BoxCollider2D>().bounds.size;
+        animator = GetComponent<Animator>();
     }
 
    void OnTriggerStay2D(Collider2D collision)
@@ -30,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 1)
         {
+            //Play the animationm before jumping
+            animator.SetBool("isJumping", true);
             switch (jumpDirection)
             {
                 case "up":
@@ -50,6 +59,57 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
+        //Check if player is rising or falling
+        if(rb.velocity.y > 0){
+            animator.SetBool("isFalling", false);
+        }
+        else if(rb.velocity.y < 0){
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", true);
+        }
+        else{
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
+        }
+
+        //Check if player is walking or running
+        if(rb.velocity.x != 0){
+            if(rb.velocity.x > 0){
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else{
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            animator.SetBool("isWalking", true);
+            isWalking = true;
+            if(Input.GetKey(KeyCode.LeftShift)){
+                animator.SetBool("isRunning", true);
+                isRunning = true;
+            }
+            else{
+                animator.SetBool("isRunning", false);
+                isRunning = false;
+            }
+        }
+        else{
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", false);
+            isWalking = false;
+            isRunning = false;
+        }
+
+        if(isWalking){
+            if(isRunning){
+                moveSpeed = 2.0f;
+            }
+            else{
+                moveSpeed = 1.0f;
+            }
+        }
+        else{
+            moveSpeed = 1.0f;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (north)
@@ -69,10 +129,15 @@ public class PlayerMovement : MonoBehaviour
         int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
         int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
 
-        RaycastHit2D[] hitUp = RaycastCheck(3, "up");
-        RaycastHit2D[] hitDown = RaycastCheck(3, "down");
-        RaycastHit2D[] hitLeft = RaycastCheck(3, "left");
-        RaycastHit2D[] hitRight = RaycastCheck(3, "right");
+        //Use all of these to tell when to begin rotating the player towards the platform if detected
+        RaycastHit2D[] hitUp = RaycastCheck(3, "up", 2.5f);
+        RaycastHit2D[] hitDown = RaycastCheck(3, "down", 2.5f);
+        RaycastHit2D[] hitLeft = RaycastCheck(5, "left", 2f);
+        RaycastHit2D[] hitRight = RaycastCheck(5, "right", 2f);
+        RaycastHit2D hitUpLeft = RaycastCheck(1, "up-left", 2.5f)[0];
+        RaycastHit2D hitUpRight = RaycastCheck(1, "up-right", 2.5f)[0];
+        RaycastHit2D hitDownLeft = RaycastCheck(1, "down-left", 2.5f)[0];
+        RaycastHit2D hitDownRight = RaycastCheck(1, "down-right", 2.5f)[0];
 
         //Check each raycast for a hit, and if any of them hit, change the jump direction
         foreach (RaycastHit2D hit in hitUp)
@@ -152,30 +217,28 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
-
         //Reset feetFacing to down for default
         feetFacing = "down";
 
        // Debug.Log("Jump Direction: " + jumpDirection); 
 
-
+        //Print the states of waling, running, jumping, and falling
+       
      
     }
 
 
-    public RaycastHit2D[] RaycastCheck(int numOfRays, string rayDirection)
+    public RaycastHit2D[] RaycastCheck(int numOfRays, string rayDirection, float rayLength = 0.1f)
     {
         // Create an array of raycast hits
         RaycastHit2D[] hits = new RaycastHit2D[numOfRays];
-
-        // Get the size of the player
-        Vector3 size = player.GetComponent<Renderer>().bounds.size;
 
         // Get the position of the player
         Vector3 position = player.transform.position;
 
         // Get the distance between each ray
-        float distance = size.x / (numOfRays - 1);
+        float distanceX = dimensions.x / (numOfRays - 1);
+        float distanceY = dimensions.y / (numOfRays - 1);
 
         //If if up or down, move along x axis, if left or right, move along y axis
         if (rayDirection == "up" || rayDirection == "down")
@@ -187,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
                 Ray2D ray = new Ray2D();
 
                 // Set the origin of the ray
-                ray.origin = new Vector2(position.x - size.x / 2 + distance * i, position.y);
+                ray.origin = new Vector2(position.x - dimensions.x / 2 + distanceX * i, position.y + 0.1714022f);
 
                 // Set the direction of the ray
                 switch (rayDirection)
@@ -201,7 +264,8 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 // Cast the ray
-                hits[i] = Physics2D.Raycast(ray.origin, ray.direction,0.8f, platformLayer);
+                hits[i] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+                Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
             }
         }
         else if (rayDirection == "left" || rayDirection == "right")
@@ -213,7 +277,7 @@ public class PlayerMovement : MonoBehaviour
                 Ray2D ray = new Ray2D();
 
                 // Set the origin of the ray
-                ray.origin = new Vector2(position.x, position.y - size.y / 2 + distance * i);
+                ray.origin = new Vector2(position.x, position.y - dimensions.y / 2 + distanceY * i + 0.1714022f);
 
                 // Set the direction of the ray
                 switch (rayDirection)
@@ -227,11 +291,47 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 // Cast the ray
-                hits[i] = Physics2D.Raycast(ray.origin, ray.direction, 0.8f, platformLayer);
+                hits[i] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+                Debug.DrawRay(ray.origin, ray.direction * rayLength,  Color.red);
             }
         }
 
+        //If up-left, up-right, down-left, down-right, check for corners
+        else if(rayDirection == "up-right"){
+            Ray2D ray = new Ray2D();
+            ray.origin = new Vector2(position.x, position.y + 0.1714022f);
+            ray.direction = new Vector2(1, 1);
+            hits[0] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+            
+        }
+        else if(rayDirection == "up-left"){
+            Ray2D ray = new Ray2D();
+            ray.origin = new Vector2(position.x, position.y + 0.1714022f);
+            ray.direction = new Vector2(-1, 1);
+            hits[0] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+        }
+        else if(rayDirection == "down-left"){
+            Ray2D ray = new Ray2D();
+            ray.origin = new Vector2(position.x, position.y + 0.1714022f);
+            ray.direction = new Vector2(-1, -1);
+            hits[0] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+        }
+        else if(rayDirection == "down-right"){
+            Ray2D ray = new Ray2D();
+            ray.origin = new Vector2(position.x, position.y + 0.1714022f);
+            ray.direction = new Vector2(1, -1);
+            hits[0] = Physics2D.Raycast(ray.origin, ray.direction, rayLength, platformLayer);
+            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+        }
+
+
+
+        #region Raycast
         // Return the array of raycast hits
+        #endregion
         return hits;
     }
     public void OnTriggerEnter2D(Collider2D collision)
