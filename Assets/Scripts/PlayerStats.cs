@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     private static int deathCount = 0;
-    public TextMeshProUGUI deathText;
+    // public TextMeshProUGUI deathText;
 
     public int DeathCount
     {
@@ -20,6 +20,6 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        deathText.text = "Deaths: " + deathCount.ToString();
+        // deathText.text = "Deaths: " + deathCount.ToString();
     }
 }
