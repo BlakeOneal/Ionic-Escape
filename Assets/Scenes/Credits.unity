@@ -315,22 +315,82 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Art
 
-    --------------
+    -----------------------
 
-    Artist 1
+    Brandon Tran
 
 
-    Artist 2
+
+
+    CRAFTPIX.NET
+
+
+
+
+
+    Rosario
+    Firmino
+
+
+    Level design
+
+    -----------------------
+
+    blake o''neal
+
+    micah
+    gant
+
+    nicole telesz
+
+
+    Scripts
+
+    -----------------------
+
+    Blake
+    O''Neal
+
+    Micah Gant
+
+    Nicole Telesz
+
+    rosario firmino
 
 
     Sound
 
-    --------------
+    -----------------------
 
-    Source
+    coolsoundfx
+
+    edemson86
+
+    pixabay
 
 
-    source'
+    speacial
+    thanks
+
+    -----------------------
+
+    nick heitzman
+
+
+    Team
+
+    -----------------------
+
+    Blake
+    o''neal
+
+    brandon tran
+
+    micah gant
+
+    nicole telesz
+
+    rosario firmino'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a29264d2478cb4a579f7f402effe0654, type: 2}
   m_sharedMaterial: {fileID: 1358134701373905190, guid: a29264d2478cb4a579f7f402effe0654, type: 2}
@@ -424,8 +484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -176.46713, y: 0}
-  m_SizeDelta: {x: 306.7823, y: 179.6942}
+  m_AnchoredPosition: {x: -176.46713, y: -0.00057411}
+  m_SizeDelta: {x: 306.7823, y: 663.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593908731
 MonoBehaviour:
@@ -1021,8 +1081,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 159.20912, y: 0}
-  m_SizeDelta: {x: 341.2983, y: 179.6942}
+  m_AnchoredPosition: {x: 159.20912, y: -0.0012817}
+  m_SizeDelta: {x: 341.2983, y: 663.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358859620
 MonoBehaviour:
@@ -1044,25 +1104,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    --------------
-
-    image 1
-
-    image 2
-
-    Image 1
-
-
-
-    --------------
-
-    title
-
-    title
-
-    title'
+  m_text: "\n----------------------------\nrobot sprites and animations\n    idle\n   
+    walk/run\n    jump\nFree industrial zone tileset\n    tiles\n    background\n   
+    objects\n    animated objects\nMagnet sprites\n\n\n----------------------------\ndesign\ndesign\nimplementation\n\n\n----------------------------\n\n\n\n\n\n\n----------------------------\nwhoosh
+    sound effect hd\ngreymorning.ogg\nthump-105302.mp3\n\n\n----------------------------\nfaculty
+    advisor\n\n\n----------------------------"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a29264d2478cb4a579f7f402effe0654, type: 2}
   m_sharedMaterial: {fileID: 1358134701373905190, guid: a29264d2478cb4a579f7f402effe0654, type: 2}
@@ -1187,8 +1233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.440979, y: -327}
-  m_SizeDelta: {x: 659.71655, y: 179.6942}
+  m_AnchoredPosition: {x: 11.440979, y: -568.7961}
+  m_SizeDelta: {x: 659.7166, y: 663.2863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698188670
 MonoBehaviour:

@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         }
         //Check if player is rising or falling
         if(rb.velocity.y > 0){
+            animator.SetBool("isJumping", true);
             animator.SetBool("isFalling", false);
         }
         else if(rb.velocity.y < 0){
