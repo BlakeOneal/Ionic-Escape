@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dimensions;
     string feetFacing = "up";
     string jumpDirection = "up";
-
+    [SerializeField] private AudioSource jumpSoundEffect;
     void Start()
     {
         rb = player.GetComponent<Rigidbody2D>();
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space) && numJumps <= 1)
         {
+            jumpSoundEffect.Play();
             //Play the animationm before jumping
             animator.SetBool("isJumping", true);
             switch (jumpDirection)
